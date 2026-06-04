@@ -1,0 +1,301 @@
+/* ────────────────────────────────────────────────────────────────────────
+   Jatin — résumé viewer
+   Aesthetic: refined editorial / archival document reader.
+   A white sheet floating on a warm field — stone in light, deep ember-charcoal
+   in dark. The document is the hero; the chrome is quiet. Theme-aware via
+   [data-theme] on <html> (set before paint, persisted to localStorage).
+   ──────────────────────────────────────────────────────────────────────── */
+
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #ece8df; /* warm stone field            */
+  --bg-2: #f3f0e9; /* lighter centre (vignette)   */
+  --bg-edge: #e1dccf; /* deeper edge (vignette)      */
+  --ink: #221d16; /* warm near-black             */
+  --muted: #8c8273;
+  --line: rgba(34, 29, 22, 0.13);
+  --surface: rgba(255, 255, 255, 0.55);
+  --surface-strong: rgba(255, 255, 255, 0.92);
+  --accent: #9a3412; /* burnt sienna                */
+  --accent-soft: rgba(154, 52, 18, 0.14);
+
+  --page-shadow: 0 1px 2px rgba(34, 29, 22, 0.05),
+    0 10px 26px rgba(34, 29, 22, 0.07);
+  --grain-opacity: 0.05;
+  --grain-blend: multiply;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #16130f; /* deep warm charcoal          */
+  --bg-2: #1e1a14;
+  --bg-edge: #100d0a;
+  --ink: #ece6db; /* warm off-white              */
+  --muted: #8f8473;
+  --line: rgba(236, 230, 219, 0.14);
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-strong: rgba(255, 255, 255, 0.11);
+  --accent: #d8783f; /* brighter sienna for dark    */
+  --accent-soft: rgba(216, 120, 63, 0.2);
+
+  --page-shadow: 0 2px 10px rgba(0, 0, 0, 0.45), 0 18px 44px rgba(0, 0, 0, 0.4);
+  --grain-opacity: 0.06;
+  --grain-blend: soft-light;
+}
+
+:root {
+  --header-height: 64px;
+  --content-max: 768px; /* page + header content cap at default zoom */
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden; /* the viewer container is the scroller */
+  color: var(--ink);
+  font-family: "Hanken Grotesk", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background-color: var(--bg);
+  background-image: radial-gradient(
+    135% 90% at 50% -10%,
+    var(--bg-2) 0%,
+    var(--bg) 52%,
+    var(--bg-edge) 100%
+  );
+  transition: background-color 0.45s var(--ease), color 0.45s var(--ease);
+}
+
+/* Faint paper grain over the field for depth (skips behind the white sheet). */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: var(--grain-blend);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── Scroll container ──────────────────────────────────────────────────────
+   PDFViewer requires this to be absolutely positioned. Spans the full viewport
+   width (below the fixed header) so a zoomed-in page can pan; the page itself
+   is capped to --content-max at default zoom (in JS). Scrollbar hidden (still
+   scrolls); auto-x lets a zoomed-in page pan horizontally. */
+#viewerContainer {
+  position: absolute;
+  top: var(--header-height);
+  inset-inline: 0;
+  bottom: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  /* Let us handle pinch as native zoom; the browser keeps 1-finger panning. */
+  touch-action: pan-x pan-y;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* legacy Edge */
+}
+#viewerContainer::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+/* ── Header ────────────────────────────────────────────────────────────────
+   A frosted bar fixed to the top of the viewport (outside the scroll
+   container), so it's pinned and never dragged by page scroll/zoom. Its inner
+   content is capped to --content-max and centred to line up with the page. */
+header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  height: var(--header-height);
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+  -webkit-backdrop-filter: saturate(1.1) blur(12px);
+  backdrop-filter: saturate(1.1) blur(12px);
+  transition: background-color 0.45s var(--ease), border-color 0.45s var(--ease);
+}
+
+.header__inner {
+  /* matches the page width: capped at --content-max, 16px gutters when narrow */
+  width: min(var(--content-max), 100% - 32px);
+  height: 100%;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: inherit;
+  animation: rise-in 0.6s var(--ease) both;
+}
+
+.brand__avatar {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px var(--line);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.brand:hover .brand__avatar {
+  transform: scale(1.06) rotate(-2deg);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+.brand__avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.brand__name {
+  font-family: "Fraunces", Georgia, serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: -0.015em;
+}
+.brand__role {
+  margin-top: 0.34rem;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Action group: theme toggle + download. */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  animation: rise-in 0.6s var(--ease) 0.08s both;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.25s var(--ease), border-color 0.25s var(--ease),
+    color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.icon-btn:hover {
+  background: var(--surface-strong);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+.icon-btn svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+/* The toggle shows the icon of the CURRENT mode (system | light | dark);
+   clicking cycles to the next. */
+.theme-toggle svg {
+  display: none;
+}
+:root[data-theme-choice="system"] .theme-toggle .icon-system,
+:root[data-theme-choice="light"] .theme-toggle .icon-sun,
+:root[data-theme-choice="dark"] .theme-toggle .icon-moon {
+  display: block;
+}
+
+/* ── The page sheet ───────────────────────────────────────────────────────
+   Override pdf.js' default page border/margins with a hairline-framed white
+   sheet on a soft (theme-aware) shadow. */
+.pdfViewer .page {
+  margin: 0 auto clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: var(--page-shadow);
+  animation: page-rise 0.75s var(--ease) 0.12s both;
+  transition: box-shadow 0.45s var(--ease), border-color 0.45s var(--ease);
+}
+.pdfViewer .page:first-of-type {
+  margin-top: clamp(1rem, 3vw, 1.75rem);
+}
+
+/* Text selection: intentionally NOT customised. pdf.js' text-layer spans
+   overlap slightly, so a custom semi-transparent ::selection gets painted
+   per-span and the alpha doubles at the seams (showing two shades). Leaving
+   it to the browser's unified default highlight keeps it one clean colour —
+   the same approach web/viewer.html uses. */
+.annotationLayer
+  :is(.linkAnnotation, .buttonWidgetAnnotation.pushButton)
+  > a:hover {
+  background: none !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* ── Motion ───────────────────────────────────────────────────────────────── */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes page-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.992);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before {
+    animation: none !important;
+    transition: none !important;
+  }
+}
