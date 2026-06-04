@@ -16,7 +16,7 @@ jobs:
 
     - name: Download PDF
       run: |
-        url="https://app.flowcv.com/api/public/download_resume?token=${{ secrets.FLOWCV_TOKEN }}"
+        url="https://www.overleaf.com/download/project/66a8da01648a5fc8f0cfc6ce/build/19e94c9d876-58e7a2ab7f3ccbbc/output/output.pdf?compileGroup=standard&clsiserverid=clsi-pre-emp-c3-c-f-zknf"
         output_file="latest.pdf"
 
         # Attempt to download the PDF
