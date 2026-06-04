@@ -1,0 +1,185 @@
+%-------------------------}
+% Resume in Latex
+% Author : Jatin
+% License : MIT
+%------------------------
+
+\documentclass[a4paper,11pt]{article}
+\setlength{\footskip}{4.08003pt}
+
+% \usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+% \usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+% \usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+% \usepackage{fancyhdr}
+% \usepackage[english]{babel}
+% \usepackage{tabularx}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+\usepackage{charter}
+
+
+% \pagestyle{fancy}
+% \fancyhf{} % clear all header and footer fields
+% \fancyfoot{}
+% \renewcommand{\headrulewidth}{0pt}
+% \renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.6in}
+\addtolength{\textwidth}{1.2in}
+\addtolength{\topmargin}{-.6in}
+\addtolength{\textheight}{1.2in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.2in, topsep=0pt, partopsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\begin{document}
+
+\begin{center}
+    \textbf{\Huge \scshape Jatin} \\\vspace{1pt}\small
+    \href{tel:+917765814914}{\underline{+91 7765814914}} $|$
+    \href{mailto:heyjatinn@gmail.com}{\underline{heyjatinn@gmail.com}} $|$
+    \href{https://linkedin.com/in/jatinnkumar}{\underline{linkedin.com/in/jatinnkumar}} $|$
+    \href{https://github.com/jatindotdev}{\underline{github.com/jatindotdev}}
+\end{center}
+
+\section{Experience}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{
+        \item{
+            {\textbf{Software Engineer} $|$ \emph{Kotlin, Spring, PostgreSQL, TypeScript} \hfill \emph{May 2026 -- Present}}\\
+            {Headout \hfill Bangalore, India}
+            \resumeItemListStart
+                \resumeItem{Works on Headout's B2B distribution layer, supporting API, Affiliate, and Agent channels that power third-party sales and integrations.}
+            \resumeItemListEnd
+        }
+    }
+    \small{
+        \item{
+            {\textbf{Software Engineer Intern} $|$ \emph{Kotlin, Spring, PostgreSQL, TypeScript} \hfill \emph{May 2025 -- May 2026}}\\
+            {Headout \hfill Bangalore, India}
+            \resumeItemListStart
+                \resumeItem{Built backend systems with \textbf{Salesforce CRM integration} and automated affiliate Terms \& Conditions acceptance through \textbf{Spotdraft} to streamline partner onboarding.}
+                \resumeItem{Shipped \textbf{Creator Monetary Campaigns} and \textbf{Opportunities Dashboard} end to end, enabling referral campaign launches, wallet credits, and partner application reviews.}
+                \resumeItem{Built \textbf{partner.headout.com/docs} on \textbf{Mintlify} with an API playground, AI assistant, and integration guides; later extended campaign infrastructure to support generic partner campaign URLs for B2B partnerships.}
+            \resumeItemListEnd
+        }
+    }
+    \small{
+        \item{
+            {\textbf{SDE Intern} $|$ \emph{Node.js, TypeScript, React Native, AWS CDK, Serverless} \hfill \emph{April 2024 -- April 2025}}\\
+            {Emendo \hfill Remote, US}
+            \resumeItemListStart
+                \resumeItem{Built a construction-management app in React Native that automated material tracking and ledger updates for contractors.}
+                \resumeItem{Developed a real-time receipt and document extraction service to automate downstream processing workflows.}
+            \resumeItemListEnd
+        }
+    }
+    \small{
+        \item{
+            {\textbf{App Development Intern} $|$ \emph{Flutter, Dart, ESP} \hfill \emph{Sep 2023 -- Dec 2023}}\\
+            {Climec Labs \hfill Chennai, India}
+            \resumeItemListStart
+                \resumeItem{Built a cross-platform IoT app for air purifiers, supporting device controls, fan-speed changes, and real-time air-quality monitoring.}
+            \resumeItemListEnd
+        }
+    }
+\end{itemize}
+
+\section{Projects}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{
+        \item{
+             {\textbf{Loop} $|$ \emph{SwiftUI, SwiftData, Spotify iOS SDK} \hfill \underline{\href{https://github.com/jatindotdev/loop}{GitHub}}}
+             \resumeItemListStart
+                \resumeItem{Built an iOS music app for trimmed Spotify clips with custom start and end points stored in SwiftData.}
+                \resumeItem{Implemented auto-advance, now-playing controls, and URI/link import for a smoother playlist-style flow.}
+             \resumeItemListEnd
+        }
+    }
+    \small{
+        \item{
+             {\textbf{KzCMS} $|$ \emph{Node.js, TypeScript, AWS S3} \hfill \underline{\href{https://github.com/srm-kzilla/kzcms}{GitHub}}}
+             \resumeItemListStart
+                \resumeItem{Co-led CMS development, adding role-based access control and real-time publishing for the club site.}
+                \resumeItem{Integrated AWS S3 to support scalable digital asset management and media sharing.}
+             \resumeItemListEnd
+        }
+    }
+\end{itemize}
+
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: TypeScript, JavaScript, Kotlin, Dart, Python, Go, SQL, C and C++} \\
+     \textbf{Frameworks}{: React, Next.js, Flutter, React Native } \\
+     \textbf{Development and Cloud}{: Node.js, AWS CDK and AWS SDK (S3, EC2, SQS, SNS, RDS), Docker, Linux Servers, Nginx } \\
+     \textbf{Databases}{: MongoDB, PostgreSQL, MySQL, Supabase, Firebase } \\
+     \textbf{Developer Tools}{: Git, VS Code, Xcode } }}
+ \end{itemize}
+
+\section{Leadership}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     {\textbf{Associate Technical Lead} $|$ {SRMKZILLA, GDSC SRM} \hfill \emph{2022 -- 2024}}\\
+     {Led technical projects, mentored developers, and helped ship internal tools and club platforms for student developer communities.}
+    }}
+\end{itemize}
+
+\section{Hackathons and Prizes}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     {\textbf{Innerve, AIT, Pune} $-$ \emph{Educative.AI, an EduTech product, placed us in the top five in India at the finals.}}
+     \\
+     {\textbf{Hacknova, Newton School Coding Club} $-$ \emph{Secured 2nd Position winning a prize pool of Rs. 10,000}}
+    }}
+ \end{itemize}
+
+\section{Education}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{
+        \item{
+            {\textbf{SRM Institute of Science and Technology} \hfill \emph{Chennai, Tamil Nadu}}\\
+            {B.Tech in Computer Science and Engineering \hfill \emph{Sept 2022 -- May 2026}}
+        }
+    }
+\end{itemize}
+
+\end{document}
