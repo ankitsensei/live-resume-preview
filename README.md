@@ -5,7 +5,9 @@ A live preview of my resume using [pdf.js](https://mozilla.github.io/pdf.js/), s
 It's a fully static, **no-build** site: a single `index.html` plus a small ES module that renders the résumé PDF with the prebuilt `pdf.js` viewer component loaded from a pinned CDN. All served files live in `public/`, which Vercel serves at the site root.
 
 ## Preview
-![cover](https://github.com/user-attachments/assets/f8c8b4df-ddfe-446d-8f07-a28bba19fc56)
+<img width="3012" height="1886" alt="file-a32a389876ef7f3f7ccceb33a1a1c6cb" src="https://github.com/user-attachments/assets/39b7f6e4-55d7-4c99-97f8-a6f6ed236d56" />
+
+
 
 ## Features
 
