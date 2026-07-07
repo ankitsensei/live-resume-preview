@@ -16,7 +16,7 @@ const { getDocument, GlobalWorkerOptions } = pdfjsLib;
 GlobalWorkerOptions.workerSrc =
   "https://cdn.jsdelivr.net/npm/pdfjs-dist@6.0.227/build/pdf.worker.min.mjs";
 
-const PDF_URL = "/files/jatin-resume.pdf";
+const PDF_URL = "/files/ankit-resume.pdf";
 
 // Theme: tri-state choice (system | light | dark). The initial state is set
 // before paint by an inline script in index.html; here we cycle + persist it,
@@ -97,7 +97,10 @@ function computeFit() {
   if (!unscaledWidth) {
     return pdfViewer.currentScale || 1;
   }
-  const target = Math.min(MAX_PAGE_WIDTH, container.clientWidth - 2 * SIDE_GUTTER);
+  const target = Math.min(
+    MAX_PAGE_WIDTH,
+    container.clientWidth - 2 * SIDE_GUTTER,
+  );
   return target / unscaledWidth;
 }
 
@@ -107,7 +110,8 @@ function refit(force) {
   if (!pdfViewer.pdfDocument) {
     return;
   }
-  const wasAtFit = fitScale && Math.abs(pdfViewer.currentScale - fitScale) < 1e-3;
+  const wasAtFit =
+    fitScale && Math.abs(pdfViewer.currentScale - fitScale) < 1e-3;
   fitScale = computeFit();
   minScale = fitScale;
   if (force || wasAtFit) {
@@ -147,7 +151,12 @@ function applyZoom({ steps = null, scaleFactor = null, origin }) {
   if (zoomingOut && minScale && pdfViewer.currentScale <= minScale + 1e-3) {
     return; // already at the fit-to-width floor
   }
-  pdfViewer.updateScale({ steps, scaleFactor, origin, drawingDelay: ZOOM_DELAY });
+  pdfViewer.updateScale({
+    steps,
+    scaleFactor,
+    origin,
+    drawingDelay: ZOOM_DELAY,
+  });
   if (minScale && pdfViewer.currentScale < minScale) {
     pdfViewer.currentScale = minScale; // clamp back up to the fit floor
   }
@@ -166,7 +175,10 @@ function accumulateFactor(prevScale, factor, key) {
   if (factor === 1) {
     return 1;
   }
-  if ((zoomAccum[key] > 1 && factor < 1) || (zoomAccum[key] < 1 && factor > 1)) {
+  if (
+    (zoomAccum[key] > 1 && factor < 1) ||
+    (zoomAccum[key] < 1 && factor > 1)
+  ) {
     zoomAccum[key] = 1;
   }
   const next =
@@ -185,16 +197,16 @@ function normalizeWheelDirection(evt) {
 
 // Tell a real Ctrl press apart from a trackpad pinch (which fakes ctrlKey).
 let isCtrlKeyDown = false;
-addEventListener("keydown", e => {
+addEventListener("keydown", (e) => {
   if (e.key === "Control") isCtrlKeyDown = true;
 });
-addEventListener("keyup", e => {
+addEventListener("keyup", (e) => {
   if (e.key === "Control") isCtrlKeyDown = false;
 });
 
 addEventListener(
   "wheel",
-  evt => {
+  (evt) => {
     if (!pdfViewer.pdfDocument) {
       return;
     }
@@ -215,7 +227,11 @@ addEventListener(
     const origin = [evt.clientX, evt.clientY];
 
     if (isPinch) {
-      scaleFactor = accumulateFactor(pdfViewer.currentScale, scaleFactor, "factor");
+      scaleFactor = accumulateFactor(
+        pdfViewer.currentScale,
+        scaleFactor,
+        "factor",
+      );
       applyZoom({ scaleFactor, origin });
       return;
     }
@@ -230,10 +246,10 @@ addEventListener(
       applyZoom({ steps: ticks, origin });
     }
   },
-  { passive: false }
+  { passive: false },
 );
 
-addEventListener("keydown", evt => {
+addEventListener("keydown", (evt) => {
   if (!(evt.ctrlKey || evt.metaKey) || evt.altKey || !pdfViewer.pdfDocument) {
     return;
   }
@@ -267,7 +283,7 @@ if (pdfjsLib.TouchManager) {
         const scaleFactor = accumulateFactor(
           pdfViewer.currentScale,
           distance / prevDistance,
-          "touch"
+          "touch",
         );
         applyZoom({ scaleFactor, origin });
       },

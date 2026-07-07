@@ -1,5 +1,5 @@
 /* ────────────────────────────────────────────────────────────────────────
-   Jatin — résumé viewer
+   Ankit — résumé viewer
    Aesthetic: refined editorial / archival document reader.
    A white sheet floating on a warm field — stone in light, deep ember-charcoal
    in dark. The document is the hero; the chrome is quiet. Theme-aware via
@@ -21,8 +21,8 @@
   --accent: #9a3412; /* burnt sienna                */
   --accent-soft: rgba(154, 52, 18, 0.14);
 
-  --page-shadow: 0 1px 2px rgba(34, 29, 22, 0.05),
-    0 10px 26px rgba(34, 29, 22, 0.07);
+  --page-shadow:
+    0 1px 2px rgba(34, 29, 22, 0.05), 0 10px 26px rgba(34, 29, 22, 0.07);
   --grain-opacity: 0.05;
   --grain-blend: multiply;
 }
@@ -75,7 +75,9 @@ body {
     var(--bg) 52%,
     var(--bg-edge) 100%
   );
-  transition: background-color 0.45s var(--ease), color 0.45s var(--ease);
+  transition:
+    background-color 0.45s var(--ease),
+    color 0.45s var(--ease);
 }
 
 /* Faint paper grain over the field for depth (skips behind the white sheet). */
@@ -125,7 +127,9 @@ header {
   background: color-mix(in srgb, var(--bg) 80%, transparent);
   -webkit-backdrop-filter: saturate(1.1) blur(12px);
   backdrop-filter: saturate(1.1) blur(12px);
-  transition: background-color 0.45s var(--ease), border-color 0.45s var(--ease);
+  transition:
+    background-color 0.45s var(--ease),
+    border-color 0.45s var(--ease);
 }
 
 .header__inner {
@@ -155,7 +159,9 @@ header {
   border-radius: 999px;
   overflow: hidden;
   box-shadow: 0 0 0 1px var(--line);
-  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  transition:
+    transform 0.3s var(--ease),
+    box-shadow 0.3s var(--ease);
 }
 .brand:hover .brand__avatar {
   transform: scale(1.06) rotate(-2deg);
@@ -209,8 +215,11 @@ header {
   border: 1px solid var(--line);
   border-radius: 999px;
   cursor: pointer;
-  transition: background 0.25s var(--ease), border-color 0.25s var(--ease),
-    color 0.25s var(--ease), transform 0.25s var(--ease);
+  transition:
+    background 0.25s var(--ease),
+    border-color 0.25s var(--ease),
+    color 0.25s var(--ease),
+    transform 0.25s var(--ease);
 }
 .icon-btn:hover {
   background: var(--surface-strong);
@@ -244,7 +253,9 @@ header {
   background: #fff;
   box-shadow: var(--page-shadow);
   animation: page-rise 0.75s var(--ease) 0.12s both;
-  transition: box-shadow 0.45s var(--ease), border-color 0.45s var(--ease);
+  transition:
+    box-shadow 0.45s var(--ease),
+    border-color 0.45s var(--ease);
 }
 .pdfViewer .page:first-of-type {
   margin-top: clamp(1rem, 3vw, 1.75rem);

@@ -1,0 +1,169 @@
+%-------------------------
+% Resume in Latex
+% Author : Ankit Bhagat
+% License : MIT
+%-------------------------
+
+\documentclass[a4paper,11pt]{article}
+\setlength{\footskip}{4.08003pt}
+
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\input{glyphtounicode}
+
+\usepackage{charter}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.6in}
+\addtolength{\textwidth}{1.2in}
+\addtolength{\topmargin}{-.6in}
+\addtolength{\textheight}{1.2in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+%-------------------------
+% Custom Commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    #1 \vspace{-2pt}
+  }
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.2in, topsep=0pt, partopsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+%----------HEADING----------
+
+\begin{center}
+    \textbf{\Huge \scshape Ankit Bhagat} \\ \vspace{2pt}
+    \small
+    \href{tel:+919102281008}{\underline{+91 9102281008}} $|$
+    \href{mailto:ankitbhagat.dev@gmail.com}{\underline{ankitbhagat.dev@gmail.com}} $|$
+    \href{https://linkedin.com/in/your-linkedin}{\underline{LinkedIn}} $|$
+    \href{https://github.com/ankitsensei}{\underline{GitHub}} $|$
+    \href{https://ankitbhagat-portfolio.vercel.app}{\underline{Portfolio}}
+\end{center}
+
+%-----------SUMMARY-----------
+
+\section{Professional Summary}
+
+Full Stack Web Developer specializing in building scalable web applications using React, Node.js, Express.js, and MongoDB. Experienced in developing responsive user interfaces, REST APIs, and deploying production-ready applications. Passionate about modern JavaScript technologies and writing clean, maintainable code.
+
+%-----------EXPERIENCE-----------
+
+\section{Experience}
+
+\begin{itemize}[leftmargin=0.15in,label={}]
+\small{
+
+\item{
+\textbf{Web Developer (Freelance)} $|$ \emph{React, Tailwind CSS, Supabase} \hfill \emph{2025}\\
+ClassyPictures \hfill Hybrid, Chakradharpur
+
+\resumeItemListStart
+\resumeItem{Developed a modern photography portfolio website using React.js, Tailwind CSS, and Supabase.}
+\resumeItem{Implemented online booking functionality and GSAP animations, reducing manual communication and improving user engagement.}
+\resumeItemListEnd
+}
+
+\item{
+\textbf{Frontend Developer (Contract)} $|$ \emph{React, Tailwind CSS, GSAP} \hfill \emph{2024}\\
+Hack United \hfill Remote
+
+\resumeItemListStart
+\resumeItem{Built a responsive hackathon website using React.js and Tailwind CSS.}
+\resumeItem{Created reusable UI components and smooth animations, improving development speed and page performance.}
+\resumeItemListEnd
+}
+
+}
+\end{itemize}
+
+%-----------PROJECTS-----------
+
+\section{Projects}
+
+\begin{itemize}[leftmargin=0.15in,label={}]
+\small{
+
+\item{
+\textbf{The North Face} $|$ \emph{React, Node.js, Express, MongoDB, Tailwind CSS}
+\hfill
+\underline{\href{https://github.com/ankitsensei}{GitHub}}
+
+\resumeItemListStart
+\resumeItem{Built a full-stack MERN e-commerce platform featuring JWT authentication, shopping cart, and product management.}
+\resumeItem{Integrated Stripe payments, Cash on Delivery, order tracking, and an admin dashboard.}
+\resumeItemListEnd
+}
+
+\item{
+\textbf{Rhythm} $|$ \emph{React, TypeScript, Tailwind CSS}
+
+\resumeItemListStart
+\resumeItem{Developed a Spotify-inspired music player using the YouTube Data API.}
+\resumeItem{Implemented song search, playback controls, keyboard shortcuts, responsive design, and modern UI.}
+\resumeItemListEnd
+}
+
+}
+\end{itemize}
+
+%-----------SKILLS-----------
+
+\section{Technical Skills}
+
+\begin{itemize}[leftmargin=0.15in,label={}]
+\small{
+\item{
+\textbf{Languages}{: JavaScript, TypeScript, Python, C, C++, Rust} \\
+
+\textbf{Frontend}{: React.js, Tailwind CSS, HTML5, CSS3} \\
+
+\textbf{Backend}{: Node.js, Express.js} \\
+
+\textbf{Databases}{: MongoDB, MySQL, Supabase, Firebase} \\
+
+\textbf{Tools}{: Git, GitHub, Postman, Linux}
+}
+}
+\end{itemize}
+
+%-----------EDUCATION-----------
+
+\section{Education}
+
+\begin{itemize}[leftmargin=0.15in,label={}]
+\small{
+
+\item{
+\textbf{Jharkhand Rai University} \hfill Ranchi, Jharkhand\\
+Bachelor of Technology in Computer Science and Engineering
+\hfill
+\emph{2024 -- 2028}\\
+CGPA: 8.5
+}
+
+}
+\end{itemize}
+
+\end{document}

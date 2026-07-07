@@ -1,16 +1,16 @@
 {
-  "name": "Jatin — Software Developer",
-  "short_name": "Jatin",
+  "name": "Ankit — Web Developer",
+  "short_name": "Ankit",
   "icons": [
     {
-      "src": "/icons/android-chrome-192x192.png",
+      "src": "/icons/android-chrome-192x192.jpeg",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/jpeg"
     },
     {
-      "src": "/icons/android-chrome-512x512.png",
+      "src": "/icons/android-chrome-512x512.jpeg",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/jpeg"
     }
   ],
   "theme_color": "#ece8df",
