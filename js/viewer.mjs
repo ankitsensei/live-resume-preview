@@ -33,7 +33,7 @@ function applyTheme(choice, persist) {
   root.dataset.themeChoice = choice;
   root.dataset.theme = resolved;
   if (themeColor) {
-    themeColor.content = resolved === "dark" ? "#16130f" : "#ece8df";
+    themeColor.content = resolved === "dark" ? "#121212" : "#ffffff";
   }
   if (toggle) {
     toggle.title = `Theme: ${choice}`;

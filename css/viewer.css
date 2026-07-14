@@ -1,7 +1,7 @@
 /* ────────────────────────────────────────────────────────────────────────
    Ankit — résumé viewer
    Aesthetic: refined editorial / archival document reader.
-   A white sheet floating on a warm field — stone in light, deep ember-charcoal
+   A white sheet floating on a clean field — white in light, deep charcoal
    in dark. The document is the hero; the chrome is quiet. Theme-aware via
    [data-theme] on <html> (set before paint, persisted to localStorage).
    ──────────────────────────────────────────────────────────────────────── */
@@ -10,30 +10,29 @@
 :root[data-theme="light"] {
   color-scheme: light;
 
-  --bg: #ece8df; /* warm stone field            */
-  --bg-2: #f3f0e9; /* lighter centre (vignette)   */
-  --bg-edge: #e1dccf; /* deeper edge (vignette)      */
-  --ink: #221d16; /* warm near-black             */
-  --muted: #8c8273;
-  --line: rgba(34, 29, 22, 0.13);
-  --surface: rgba(255, 255, 255, 0.55);
-  --surface-strong: rgba(255, 255, 255, 0.92);
-  --accent: #9a3412; /* burnt sienna                */
-  --accent-soft: rgba(154, 52, 18, 0.14);
+  --bg: #ffffff;
+  --bg-2: #ffffff;
+  --bg-edge: #f4f4f5;
+  --ink: #09090b;
+  --muted: #71717a;
+  --line: rgba(0, 0, 0, 0.08);
+  --surface: rgba(255, 255, 255, 0.8);
+  --surface-strong: rgba(255, 255, 255, 0.95);
+  --accent: #9a3412;
+  --accent-soft: rgba(154, 52, 18, 0.1);
 
-  --page-shadow:
-    0 1px 2px rgba(34, 29, 22, 0.05), 0 10px 26px rgba(34, 29, 22, 0.07);
-  --grain-opacity: 0.05;
+  --page-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 10px 26px rgba(0, 0, 0, 0.06);
+  --grain-opacity: 0.03;
   --grain-blend: multiply;
 }
 
 :root[data-theme="dark"] {
   color-scheme: dark;
 
-  --bg: #16130f; /* deep warm charcoal          */
-  --bg-2: #1e1a14;
-  --bg-edge: #100d0a;
-  --ink: #ece6db; /* warm off-white              */
+  --bg: #121212;
+  --bg-2: #121212;
+  --bg-edge: #0a0a0a;
+  --ink: #e4e4e7;
   --muted: #8f8473;
   --line: rgba(236, 230, 219, 0.14);
   --surface: rgba(255, 255, 255, 0.05);
