@@ -1,91 +1,207 @@
-\documentclass[10pt]{article}
+\documentclass[10pt,a4paper]{article}
 
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[margin=0.35in]{geometry}
+% ---------- Packages ----------
+\usepackage[
+    top=0.45in,
+    bottom=0.45in,
+    left=0.55in,
+    right=0.55in
+]{geometry}
+
 \usepackage{enumitem}
-\usepackage[hidelinks]{hyperref}
+\usepackage{titlesec}
+\usepackage{hyperref}
 \usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{fontawesome5}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
 
+% ---------- Colors ----------
+\definecolor{primary}{HTML}{111111}
+\definecolor{secondary}{HTML}{444444}
+
+% ---------- Hyperlinks ----------
+\hypersetup{
+    colorlinks=true,
+    urlcolor=primary,
+    linkcolor=primary
+}
+
+% ---------- General ----------
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
-\raggedright
-\setlist[itemize]{leftmargin=1.2em, topsep=1pt, itemsep=1pt, parsep=0pt}
-\renewcommand\labelitemi{\textbullet}
 
-\newcommand{\sectiontitle}[1]{%
-  \vspace{5pt}\textbf{\large #1}\par\vspace{1pt}\hrule\vspace{3pt}%
+% ---------- Section Formatting ----------
+\titleformat{\section}
+    {\large\bfseries\color{primary}}
+    {}
+    {0em}
+    {}
+    [\titlerule]
+
+\titlespacing*{\section}
+    {0pt}
+    {6pt}
+    {4pt}
+
+% ---------- Lists ----------
+\setlist[itemize]{
+    leftmargin=1.2em,
+    itemsep=1pt,
+    topsep=1pt,
+    parsep=0pt,
+    partopsep=0pt
 }
-\newcommand{\role}[4]{%
-  \textbf{#1} \textbar{} #2 \hfill #3\par
-  \textit{#4}\par
+
+% ---------- Custom Commands ----------
+\newcommand{\resumeItem}[1]{
+    \item\small{#1}
 }
-\newcommand{\project}[4]{%
-  \textbf{#1} \textbar{} #2 \hfill #3\par
-  \textit{#4}\par
+
+\newcommand{\resumeSubheading}[4]{
+    \vspace{2pt}
+    \textbf{#1} \hfill \textbf{#2} \\
+    \textit{#3} \hfill \textit{#4}
+    \vspace{1pt}
 }
-\newcommand{\skillrow}[2]{\textbf{#1: }#2\par}
+
+\newcommand{\projectHeading}[3]{
+    \vspace{2pt}
+    \textbf{#1} \hfill \textbf{#2} \\
+    \textit{#3}
+    \vspace{1pt}
+}
+
+% =========================================================
+% DOCUMENT
+% =========================================================
 
 \begin{document}
 
+% ---------- Header ----------
 \begin{center}
-  {\LARGE \textbf{ANKIT BHAGAT}}\\[-1pt]
-  \textit{Frontend Developer \textbar{} React Developer}\\[3pt]
-  \href{mailto:ankitbhagat.dev@gmail.com}{ankitbhagat.dev@gmail.com} \textbar{}
-  \href{https://github.com/ankitsensei}{GitHub} \textbar{} \href{https://x.com/webdevankit}{X (Twitter)} \textbar{} \href{https://www.linkedin.com/in/ankit-bhagat-139276241}{LinkedIn} \textbar{} \href{https://ankitbhagat-portfolio.vercel.app/}{Website} \textbar{} Ranchi, India
+    {\Huge \textbf{Ankit Bhagat}} \\[4pt]
+
+    {\large Frontend Developer \;|\; React Developer} \\[6pt]
+
+    \small
+    \faPhone\ 9102281008
+    \quad
+    \faEnvelope\ \href{mailto:ankitbhagat.dev@gmail.com}{ankitbhagat.dev@gmail.com}
+    \quad
+    \faGithub\ \href{https://github.com/ankitsensei}{GitHub}
+    \quad
+    \faTwitter\ \href{https://x.com/webdevankit}{X (Twitter)}
+    \quad
+    \faLinkedin\ \href{https://linkedin.com/in/ankitbhagat-dev}{LinkedIn}
+    \quad
+    \faGlobe\ \href{https://ankitbhagat-portfolio.vercel.app/}{Website}
+    \\[3pt]
+    \small Ranchi, India
 \end{center}
 
-\sectiontitle{PROFESSIONAL SUMMARY}
-Frontend Developer specializing in \textbf{React}, \textbf{TypeScript}, \textbf{Tailwind CSS}, and \textbf{REST API integration}. Experienced in building \textbf{responsive}, accessible, and performance-focused web applications with \textbf{Node.js}, \textbf{Express}, and \textbf{MongoDB}. Skilled in reusable components, frontend architecture, and deploying production-ready applications on \textbf{Vercel}.
+% ---------- Summary ----------
+\section{PROFESSIONAL SUMMARY}
 
-\sectiontitle{WORK EXPERIENCE}
-\role{Web Developer}{Freelance}{Jun 2025 -- Jul 2025}{ClassyPictures \textbar{} Hybrid, Chakradharpur, Jharkhand}
+\small
+Full-Stack Developer skilled in React, Next.js, TypeScript, Node.js, Express, PostgreSQL, and MongoDB. Experienced in building REST APIs, authentication systems, real-time applications, and responsive web interfaces through hands-on projects. Strong interest in backend development, database design, and building scalable, production-ready web applications.
+
+% ---------- Experience ----------
+\section{WORK EXPERIENCE}
+
+\resumeSubheading
+    {Web Developer Contract}
+    {Jun 2025 -- Jul 2025}
+    {ClassyPictures}
+    {Hybrid -- Chakradharpur, Jharkhand}
+
 \begin{itemize}
-  \item Developed a responsive photography portfolio website using \textbf{React.js}, \textbf{Tailwind CSS}, and \textbf{Supabase}, attracting over \textbf{100 weekly visits} while managing booking data.
-  \item Implemented \textbf{online shoot booking}, form handling, and \textbf{GSAP animations}, reducing manual communication by \textbf{40\%} and improving user engagement.
-  \item \textit{Technologies / Skills Used: React, Tailwind CSS, TypeScript, JavaScript, GSAP, Supabase}
+    \resumeItem{Developed a photography portfolio website using React.js, Tailwind CSS, and Supabase, attracting over 100 weekly visits while effectively managing booking data.}
+    \resumeItem{Implemented online shoot booking and GSAP animations, resulting in a 40\% reduction in manual communication and enhanced user engagement.}
+    \resumeItem{\textbf{Technologies:} React, Tailwind CSS, TypeScript, JavaScript, GSAP, Supabase}
 \end{itemize}
 
-\role{Frontend Developer}{Contract}{Nov 2024 -- Dec 2024}{Hack United \textbar{} Remote, New York}
+\resumeSubheading
+    {Frontend Developer Contract}
+    {Nov 2024 -- Dec 2024}
+    {Hack United}
+    {Remote -- New York, USA}
+
 \begin{itemize}
-  \item Developed a mobile-first hackathon website for a non-profit organization using \textbf{React.js} and \textbf{Tailwind CSS}, supporting \textbf{200+ participant visits} across devices.
-  \item Designed \textbf{reusable components} and optimized UI animations with \textbf{GSAP}, decreasing development time by \textbf{30\%} while improving page performance.
-  \item \textit{Technologies / Skills Used: React, Tailwind CSS, TypeScript, JavaScript, GSAP}
+    \resumeItem{Developed a responsive hackathon website for a non-profit organization using React.js and Tailwind CSS, accommodating over 200 participant visits across devices.}
+    \resumeItem{Designed reusable components and implemented GSAP animations, decreasing development time by approximately 30\% while improving page performance.}
+    \resumeItem{\textbf{Technologies:} React, Tailwind CSS, TypeScript, JavaScript, GSAP}
 \end{itemize}
 
-\sectiontitle{PROJECTS}
-\project{Graphite}{\href{https://github.com/ankitsensei/graphite}{GitHub} \textbar{} \href{https://graphite-five-plum.vercel.app/}{Website}}{Jul 2026 -- Jul 2026}{Frontend Dev}
+% ---------- Projects ----------
+\section{PROJECTS}
+
+% GMeet
+\projectHeading
+    {\href{https://github.com/ankitsensei/gmeet}{GMeet}}
+    {Sep 2026 -- Sep 2026}
+    {Full-Stack Web Developer}
+
 \begin{itemize}
-  \item Developed an \textbf{open-source}, local-first note-taking application using \textbf{React}, \textbf{TypeScript}, and \textbf{Tiptap} for developers and technical writers.
-  \item Implemented \textbf{syntax-highlighted code blocks} with Shiki, image uploads, note CRUD, instant search, \textbf{dark mode}, and \textbf{localStorage autosave} with no backend dependency.
-  \item \textit{Technologies / Tools Used: React, TypeScript, Vite, Tiptap, Shiki, Tailwind CSS, Lucide React, OxLint}
+    \resumeItem{Built a Google Meet-style video conferencing platform using Next.js, ZegoCloud, and MongoDB, supporting real-time group meetings.}
+    \resumeItem{Implemented Google and GitHub OAuth authentication with protected routes and authentication middleware.}
+    \resumeItem{Developed instant meeting creation with unique room links and join-by-code/URL functionality.}
+    \resumeItem{Integrated real-time conferencing features including group video, screen sharing, and audio/video controls using ZegoCloud.}
+    \resumeItem{Added responsive dark/light themes with automatic system preference detection.}
+    \resumeItem{\textbf{Technologies:} Next.js, TypeScript, MongoDB, ZegoCloud}
 \end{itemize}
 
-\project{The North Face}{\href{https://github.com/ankitsensei/theNorthFace}{GitHub} \textbar{} \href{https://the-north-face-kappa.vercel.app/}{Website}}{Jun 2026 -- Jun 2026}{MERN Stack Dev}
+% Graphite
+\projectHeading
+    {\href{https://github.com/ankitsensei/graphite}{Graphite}}
+    {Jul 2026 -- Aug 2026}
+    {Frontend Developer}
+
 \begin{itemize}
-  \item Developed a full-stack \textbf{MERN e-commerce application} with \textbf{React}, \textbf{Node.js}, \textbf{Express}, \textbf{MongoDB}, secure JWT authentication, cart management, and RESTful APIs.
-  \item Implemented \textbf{Stripe} and Cash on Delivery payments, \textbf{order tracking}, and an \textbf{admin dashboard} for managing products, users, and orders.
-  \item \textit{Technologies / Tools Used: React, Node.js, Express, MongoDB, Tailwind CSS}
+    \resumeItem{Developed a modern developer-focused web application using React and TypeScript with a responsive Tailwind CSS interface.}
+    \resumeItem{Built interactive drag-and-drop functionality using dnd-kit and integrated a rich text editor using Tiptap.}
+    \resumeItem{Implemented syntax highlighting and developer-oriented content rendering using Shiki.}
+    \resumeItem{\textbf{Technologies:} React, Tailwind CSS, TypeScript, dnd-kit, Shiki, Tiptap}
 \end{itemize}
 
-\project{Rhythm}{\href{https://github.com/ankitsensei/rhythm}{GitHub} \textbar{} \href{https://rhythm-topaz.vercel.app/}{Website}}{Jun 2026 -- Jun 2026}{Frontend Dev}
+% The North Face
+\projectHeading
+    {\href{https://github.com/ankitsensei/the-north-face}{The North Face}}
+    {Jun 2026 -- Jun 2026}
+    {MERN Stack Developer}
+
 \begin{itemize}
-  \item Developed a modern music player using \textbf{React}, \textbf{TypeScript}, and \textbf{Tailwind CSS}, integrating the \textbf{YouTube Data API} to support \textbf{millions of searchable tracks}.
-  \item Implemented \textbf{5+ core features}, including song search, instant playback, \textbf{keyboard shortcuts}, \textbf{responsive design}, and API-driven state management.
-  \item \textit{Technologies / Tools Used: React, Tailwind CSS, TypeScript}
+    \resumeItem{Developed a full-stack MERN e-commerce application featuring secure JWT authentication, product management, shopping cart, and RESTful APIs.}
+    \resumeItem{Implemented Stripe and Cash on Delivery payment methods, along with order tracking and an admin dashboard for managing products, users, and orders.}
+    \resumeItem{\textbf{Technologies:} React, Node.js, Express, MongoDB, Tailwind CSS}
 \end{itemize}
 
-\sectiontitle{SKILLS}
-\skillrow{Frontend}{React, TypeScript, JavaScript, Tailwind CSS, Responsive Design, UI Components}
-\skillrow{Backend \& APIs}{Node.js, Express, REST APIs, JWT Authentication, API Integration}
-\skillrow{Databases \& BaaS}{MongoDB, MySQL, Supabase, Firebase}
-\skillrow{Tools \& Platforms}{Git, GitHub, Postman, Vercel, Linux, OxLint}
-\skillrow{Languages}{English, Hindi}
-\skillrow{Soft Skills}{Problem Solving, Communication, Teamwork, Leadership, Adaptability}
+% ---------- Skills ----------
+\section{SKILLS}
 
-\sectiontitle{EDUCATION}
-\textbf{Jharkhand Rai University --- Ranchi} \textbar{} Ranchi, Jharkhand \hfill Sep 2024 -- Sep 2028\par
-\textit{B.Tech in Computer Science and Engineering} \hfill \textit{CGPA: \textbf{8.5}}
+\small
+\begin{tabularx}{\textwidth}{@{}>{\bfseries}l X@{}}
+Databases & MongoDB, MySQL, Supabase, Firebase, PostgreSQL \\
+Frameworks \& Libraries & React, Next.js, Node.js, Express, Tailwind CSS \\
+Programming Languages & TypeScript, JavaScript, Python, C, C++, Rust \\
+Tools \& Platforms & Git, GitHub, Postman, Linux \\
+Soft Skills & Leadership, Teamwork, Problem Solving, Communication, Decision Making, Adaptability \\
+Languages & English, Hindi \\
+\end{tabularx}
+
+% ---------- Education ----------
+\section{EDUCATION}
+
+\resumeSubheading
+    {Jharkhand Rai University}
+    {Sep 2024 -- Sep 2028}
+    {B.Tech in Computer Science and Engineering}
+    {Ranchi, Jharkhand}
+
+\small
+\textbf{CGPA:} 8.5
 
 \end{document}
