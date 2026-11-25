@@ -5,7 +5,7 @@
     top=17.4pt,
     bottom=12pt,
     left=12pt,
-    right=12pt
+    right=13.5pt
 ]{geometry}
 
 \usepackage{enumitem}
@@ -48,15 +48,15 @@
 
 \titlespacing*{\section}
     {0pt}
-    {7.3pt}
-    {4.7pt}
+    {6.6pt}
+    {4.5pt}
 
 % ---------- Lists ----------
 \setlist[itemize]{
     leftmargin=13.5pt,
     labelsep=8.3pt,
     label=\textbullet,
-    itemsep=0.2pt,
+    itemsep=0.415pt,
     topsep=0pt,
     parsep=0pt,
     partopsep=0pt
@@ -66,16 +66,16 @@
 % #1 title  #2 date  #3 left sub-line  #4 right sub-line
 \newcommand{\resumeEntry}[4]{%
     \par\noindent
-    {\fontsize{12}{14}\selectfont #1 \hfill {\fontsize{10.9}{13}\selectfont #2}\par}%
-    \noindent{\fontsize{10.9}{13.7}\selectfont #3 \hfill #4\par}%
+    {\fontsize{12}{14}\selectfont\hspace{1.5pt}#1 \hfill {\fontsize{10.9}{13}\selectfont \raisebox{1.5pt}{#2}}\par}%
+    \noindent{\fontsize{10.9}{13.7}\selectfont\hspace{1.5pt}#3 \hfill \raisebox{1.5pt}{#4}\par}%
 }
 
 % #1 project title  #2 date  #3 role  #4 optional tagline
 \newcommand{\resumeProject}[4]{%
     \par\noindent
-    {\fontsize{12}{14}\selectfont #1 \hfill {\fontsize{10.9}{13}\selectfont #2}\par}%
+    {\fontsize{12}{14}\selectfont\hspace{1.5pt}#1 \hfill {\fontsize{10.9}{13}\selectfont \raisebox{1.5pt}{#2}}\par}%
     \noindent{\fontsize{10.9}{13.7}\selectfont #3\par}%
-    \ifx\relax#4\relax\else\noindent{\fontsize{10.1}{12}\selectfont #4\par}\fi
+    \ifx\relax#4\relax\else\noindent{\fontsize{10.1}{12}\selectfont\hspace{1.5pt}#4\par}\fi
 }
 
 % =========================================================
@@ -88,7 +88,7 @@
 {\centering
     {\fontsize{25.5}{30}\selectfont \textsc{Ankit Bhagat}\par}
     {\fontsize{10.9}{16.3}\selectfont \textit{Frontend Developer | React Developer}\par}
-    {\fontsize{10.1}{14.6}\selectfont
+    {\fontsize{10.1}{14.6}\selectfont\hspace*{16.4pt}
         \smash{\faEnvelope}\ \href{mailto:ankitbhagat.dev@gmail.com}{ankitbhagat.dev@gmail.com}
         \smash{\faGithub}\ \href{https://github.com/ankitsensei}{GitHub}
         \smash{\faTwitter}\ \href{https://x.com/webdevankit}{X (Twitter)}
@@ -100,7 +100,7 @@
 % ---------- Summary ----------
 \section{PROFESSIONAL SUMMARY}
 
-Full-Stack Developer skilled in \textbf{React}, \textbf{Next.js}, \textbf{TypeScript}, \textbf{Node.js}, \textbf{Express}, \textbf{PostgreSQL}, and \textbf{MongoDB}. Experienced in building \textbf{REST APIs}, authentication systems, real-time applications, and responsive web interfaces through hands-on projects. Strong interest in backend development, database design, and building scalable, production-ready web applications.
+{\fontsize{10.1}{12.5}\selectfont Full-Stack Developer skilled in \textbf{React}, \textbf{Next.js}, \textbf{TypeScript}, \textbf{Node.js}, \textbf{Express}, \textbf{PostgreSQL}, and \textbf{MongoDB}. Experienced in building \textbf{REST APIs}, authentication systems, real-time applications, and responsive web interfaces through hands-on projects. Strong interest in backend development, database design, and building scalable, production-ready web applications.\par}
 
 % ---------- Experience ----------
 \section{WORK EXPERIENCE}
@@ -116,9 +116,9 @@ Full-Stack Developer skilled in \textbf{React}, \textbf{Next.js}, \textbf{TypeSc
     \item Implemented online shoot booking and GSAP animations, resulting in a \textbf{40\% reduction} in manual communication and \textbf{enhanced user engagement}.
 \end{itemize}
 
-\noindent{\bfseries\itshape Technologies / Skills Used :}\ {\itshape React, Tailwind CSS, Typescript, Javascript, GSAP, Supabase\par}
+\noindent\hspace{1.5pt}{\bfseries\itshape Technologies / Skills Used :}\ {\itshape React, Tailwind CSS, Typescript, Javascript, GSAP, Supabase\par}
 
-\vspace{4.8pt}
+\vspace{5.1pt}
 \resumeEntry
     {\textbf{Frontend Developer} | Contract}
     {}
@@ -130,7 +130,7 @@ Full-Stack Developer skilled in \textbf{React}, \textbf{Next.js}, \textbf{TypeSc
     \item Designed reusable components and implemented GSAP animations, decreasing development time by approximately 30\% while enhancing page load speed.
 \end{itemize}
 
-\noindent{\bfseries\itshape Technologies / Skills Used :}\ {\itshape React, Tailwind CSS, Typescript, Javascript, GSAP\par}
+\noindent\hspace{1.5pt}{\bfseries\itshape Technologies / Skills Used :}\ {\itshape React, Tailwind CSS, Typescript, Javascript, GSAP\par}
 
 % ---------- Projects ----------
 \section{PROJECTS}
@@ -148,9 +148,9 @@ Full-Stack Developer skilled in \textbf{React}, \textbf{Next.js}, \textbf{TypeSc
     \item \textbf{Scalability}: Reliable architecture designed to support \textbf{thousands of concurrent users}.
 \end{itemize}
 
-\noindent{\bfseries\itshape Technologies / Tools Used :}\ {\itshape React, Node.js, Express, Tailwind CSS, Postgresql\par}
+\noindent\hspace{1.5pt}{\bfseries\itshape Technologies / Tools Used :}\ {\itshape React, Node.js, Express, Tailwind CSS, Postgresql\par}
 
-\vspace{4.8pt}
+\vspace{5.1pt}
 \resumeProject
     {\textbf{GMeet} | \href{https://github.com/ankitsensei/gmeet}{\smash{\faGithub}\ Github} \href{https://gmeet-three.vercel.app/}{\smash{\faGlobe}\ Website}}
     {Sep 2026 - Sep 2026}
@@ -165,9 +165,9 @@ Full-Stack Developer skilled in \textbf{React}, \textbf{Next.js}, \textbf{TypeSc
     \item Added \textbf{responsive dark/light themes} with system preference detection across the application.
 \end{itemize}
 
-\noindent{\bfseries\itshape Technologies / Tools Used :}\ {\itshape Nextjs, TypeScript, MongoDB, ZegoCloud\par}
+\noindent\hspace{1.5pt}{\bfseries\itshape Technologies / Tools Used :}\ {\itshape Nextjs, TypeScript, MongoDB, ZegoCloud\par}
 
-\vspace{4.8pt}
+\vspace{5.1pt}
 \resumeProject
     {\textbf{graphite} | \href{https://github.com/ankitsensei/graphite}{\smash{\faGithub}\ Github} \href{https://graphite-five-plum.vercel.app/}{\smash{\faGlobe}\ Website}}
     {Jul 2026 - Aug 2026}
@@ -182,19 +182,19 @@ Full-Stack Developer skilled in \textbf{React}, \textbf{Next.js}, \textbf{TypeSc
     \item Added \textbf{2 responsive UI themes (dark/light)} with automatic system preference detection.
 \end{itemize}
 
-\noindent{\bfseries\itshape Technologies / Tools Used :}\ {\itshape React, Tailwind CSS, TypeScript, dnd-kit, shiki, tiptap\par}
+\noindent\hspace{1.5pt}{\bfseries\itshape Technologies / Tools Used :}\ {\itshape React, Tailwind CSS, TypeScript, dnd-kit, shiki, tiptap\par}
 
 % ---------- Skills ----------
 \section{SKILLS}
 
-\begin{tabularx}{\textwidth}{@{}>{\bfseries}l@{\hspace{40pt}}X@{}}
+\begin{tabularx}{\textwidth}{@{}>{\bfseries}l@{\hspace{41.4pt}}X@{}}
 Databases : & MongoDB, MySQL, Supabase, Firebase, PostgreSQL \\
 Frameworks \& Libraries : & React, Tailwind CSS, Node.js, Express, Next.js \\
 Languages : & English, Hindi \\
 Programming Languages : & JavaScript, TypeScript, Python, C, C++, Rust \\
 Soft Skills : & Leadership, Teamwork, Problem Solving, Communication, Decision Making, Adaptability \\
 Tools \& Platforms : & Git, GitHub, Postman, Linux, Docker \\
-\end{tabularx}
+\end{tabularx}\par\vspace{-0.72pt}
 
 % ---------- Education ----------
 \section{EDUCATION}
