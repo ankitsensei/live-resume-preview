@@ -1,78 +1,81 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[10pt,letterpaper]{article}
 
 % ---------- Packages ----------
 \usepackage[
-    top=0.45in,
-    bottom=0.45in,
-    left=0.55in,
-    right=0.55in
+    top=17.4pt,
+    bottom=12pt,
+    left=12pt,
+    right=12pt
 ]{geometry}
 
 \usepackage{enumitem}
 \usepackage{titlesec}
-\usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{tabularx}
 \usepackage{array}
 \usepackage{fontawesome5}
 \usepackage[T1]{fontenc}
-\usepackage{lmodern}
+\usepackage{newtxtext}
+\usepackage{hyperref}
 
-% ---------- Colors ----------
-\definecolor{primary}{HTML}{111111}
-\definecolor{secondary}{HTML}{444444}
-
-% ---------- Hyperlinks ----------
+% ---------- Hyperlinks (all black, as in the source PDF) ----------
 \hypersetup{
     colorlinks=true,
-    urlcolor=primary,
-    linkcolor=primary
+    urlcolor=black,
+    linkcolor=black
 }
 
 % ---------- General ----------
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
+\linespread{0.875}\selectfont
+\lineskiplimit=-10pt
+\renewcommand{\arraystretch}{1.08}
+\makeatletter
+\renewcommand{\normalsize}{\@setfontsize\normalsize{10.1}{12}}
+\makeatother
+\hyphenpenalty=10000 \exhyphenpenalty=10000
+\tolerance=10000
 
 % ---------- Section Formatting ----------
 \titleformat{\section}
-    {\large\bfseries\color{primary}}
+    {\large\bfseries}
     {}
     {0em}
     {}
-    [\titlerule]
+    [{\titlerule[0.75pt]}]
 
 \titlespacing*{\section}
     {0pt}
-    {6pt}
-    {4pt}
+    {7.3pt}
+    {4.7pt}
 
 % ---------- Lists ----------
 \setlist[itemize]{
-    leftmargin=1.2em,
-    itemsep=1pt,
-    topsep=1pt,
+    leftmargin=13.5pt,
+    labelsep=8.3pt,
+    label=\textbullet,
+    itemsep=0.2pt,
+    topsep=0pt,
     parsep=0pt,
     partopsep=0pt
 }
 
 % ---------- Custom Commands ----------
-\newcommand{\resumeItem}[1]{
-    \item\small{#1}
+% #1 title  #2 date  #3 left sub-line  #4 right sub-line
+\newcommand{\resumeEntry}[4]{%
+    \par\noindent
+    {\fontsize{12}{14}\selectfont #1 \hfill {\fontsize{10.9}{13}\selectfont #2}\par}%
+    \noindent{\fontsize{10.9}{13.7}\selectfont #3 \hfill #4\par}%
 }
 
-\newcommand{\resumeSubheading}[4]{
-    \vspace{2pt}
-    \textbf{#1} \hfill \textbf{#2} \\
-    \textit{#3} \hfill \textit{#4}
-    \vspace{1pt}
-}
-
-\newcommand{\projectHeading}[3]{
-    \vspace{2pt}
-    \textbf{#1} \hfill \textbf{#2} \\
-    \textit{#3}
-    \vspace{1pt}
+% #1 project title  #2 date  #3 role  #4 optional tagline
+\newcommand{\resumeProject}[4]{%
+    \par\noindent
+    {\fontsize{12}{14}\selectfont #1 \hfill {\fontsize{10.9}{13}\selectfont #2}\par}%
+    \noindent{\fontsize{10.9}{13.7}\selectfont #3\par}%
+    \ifx\relax#4\relax\else\noindent{\fontsize{10.1}{12}\selectfont #4\par}\fi
 }
 
 % =========================================================
@@ -82,126 +85,124 @@
 \begin{document}
 
 % ---------- Header ----------
-\begin{center}
-    {\Huge \textbf{Ankit Bhagat}} \\[4pt]
-
-    {\large Frontend Developer \;|\; React Developer} \\[6pt]
-
-    \small
-    \faPhone\ 9102281008
-    \quad
-    \faEnvelope\ \href{mailto:ankitbhagat.dev@gmail.com}{ankitbhagat.dev@gmail.com}
-    \quad
-    \faGithub\ \href{https://github.com/ankitsensei}{GitHub}
-    \quad
-    \faTwitter\ \href{https://x.com/webdevankit}{X (Twitter)}
-    \quad
-    \faLinkedin\ \href{https://linkedin.com/in/ankitbhagat-dev}{LinkedIn}
-    \quad
-    \faGlobe\ \href{https://ankitbhagat.site/}{Website}
-    \\[3pt]
-    \small Ranchi, India
-\end{center}
+{\centering
+    {\fontsize{25.5}{30}\selectfont \textsc{Ankit Bhagat}\par}
+    {\fontsize{10.9}{16.3}\selectfont \textit{Frontend Developer | React Developer}\par}
+    {\fontsize{10.1}{14.6}\selectfont
+        \smash{\faEnvelope}\ \href{mailto:ankitbhagat.dev@gmail.com}{ankitbhagat.dev@gmail.com}
+        \smash{\faGithub}\ \href{https://github.com/ankitsensei}{GitHub}
+        \smash{\faTwitter}\ \href{https://x.com/webdevankit}{X (Twitter)}
+        \smash{\faLinkedin}\ \href{https://www.linkedin.com/in/ankit-bhagat-139276241/}{LinkedIn}
+        \smash{\faLink}\ \href{https://ankitbhagat-portfolio.vercel.app/}{Website}
+        \smash{\faMapMarker}\ Ranchi, India\par}
+\par}
 
 % ---------- Summary ----------
 \section{PROFESSIONAL SUMMARY}
 
-\small
-Full-Stack Developer skilled in React, Next.js, TypeScript, Node.js, Express, PostgreSQL, and MongoDB. Experienced in building REST APIs, authentication systems, real-time applications, and responsive web interfaces through hands-on projects. Strong interest in backend development, database design, and building scalable, production-ready web applications.
+Full-Stack Developer skilled in \textbf{React}, \textbf{Next.js}, \textbf{TypeScript}, \textbf{Node.js}, \textbf{Express}, \textbf{PostgreSQL}, and \textbf{MongoDB}. Experienced in building \textbf{REST APIs}, authentication systems, real-time applications, and responsive web interfaces through hands-on projects. Strong interest in backend development, database design, and building scalable, production-ready web applications.
 
 % ---------- Experience ----------
 \section{WORK EXPERIENCE}
 
-\resumeSubheading
-    {Web Developer Contract}
-    {Jun 2025 -- Jul 2025}
-    {ClassyPictures}
-    {Hybrid -- Chakradharpur, Jharkhand}
+\resumeEntry
+    {\textbf{Web Developer} | Contract}
+    {Jun 2025 - Jul 2025}
+    {\textit{ClassyPictures}}
+    {\textit{Hybrid} \textperiodcentered\ \textit{Chakradharpur, Jharkhand}}
 
 \begin{itemize}
-    \resumeItem{Developed a photography portfolio website using React.js, Tailwind CSS, and Supabase, attracting over 100 weekly visits while effectively managing booking data.}
-    \resumeItem{Implemented online shoot booking and GSAP animations, resulting in a 40\% reduction in manual communication and enhanced user engagement.}
-    \resumeItem{\textbf{Technologies:} React, Tailwind CSS, TypeScript, JavaScript, GSAP, Supabase}
+    \item Developed a \textbf{photography portfolio website} using \textbf{React.js}, \textbf{Tailwind CSS}, and Supabase, attracting over 100 weekly visits while effectively managing booking data.
+    \item Implemented online shoot booking and GSAP animations, resulting in a \textbf{40\% reduction} in manual communication and \textbf{enhanced user engagement}.
 \end{itemize}
 
-\resumeSubheading
-    {Frontend Developer Contract}
-    {Nov 2024 -- Dec 2024}
-    {Hack United}
-    {Remote -- New York, USA}
+\noindent{\bfseries\itshape Technologies / Skills Used :}\ {\itshape React, Tailwind CSS, Typescript, Javascript, GSAP, Supabase\par}
+
+\vspace{4.8pt}
+\resumeEntry
+    {\textbf{Frontend Developer} | Contract}
+    {}
+    {\textit{Hack United}}
+    {}
 
 \begin{itemize}
-    \resumeItem{Developed a responsive hackathon website for a non-profit organization using React.js and Tailwind CSS, accommodating over 200 participant visits across devices.}
-    \resumeItem{Designed reusable components and implemented GSAP animations, decreasing development time by approximately 30\% while improving page performance.}
-    \resumeItem{\textbf{Technologies:} React, Tailwind CSS, TypeScript, JavaScript, GSAP}
+    \item Developed a \textbf{responsive hackathon website} for a non-profit organization using \textbf{React.js} and \textbf{Tailwind CSS}, accommodating over 200 participant visits across devices.
+    \item Designed reusable components and implemented GSAP animations, decreasing development time by approximately 30\% while enhancing page load speed.
 \end{itemize}
+
+\noindent{\bfseries\itshape Technologies / Skills Used :}\ {\itshape React, Tailwind CSS, Typescript, Javascript, GSAP\par}
 
 % ---------- Projects ----------
 \section{PROJECTS}
 
-% GMeet
-\projectHeading
-    {\href{https://github.com/ankitsensei/gmeet}{GMeet}}
-    {Sep 2026 -- Sep 2026}
-    {Full-Stack Web Developer}
+\resumeProject
+    {\textbf{HabitStreaks} | \href{https://github.com/ankitsensei/HabitStreaks}{\smash{\faGithub}\ Github} \href{https://habit-streaks-k22x.vercel.app/}{\smash{\faGlobe}\ Website}}
+    {Oct 2026 - Nov 2026}
+    {\textit{PERN Stack Dev}}
+    {}
 
 \begin{itemize}
-    \resumeItem{Built a Google Meet-style video conferencing platform using Next.js, ZegoCloud, and MongoDB, supporting real-time group meetings.}
-    \resumeItem{Implemented Google and GitHub OAuth authentication with protected routes and authentication middleware.}
-    \resumeItem{Developed instant meeting creation with unique room links and join-by-code/URL functionality.}
-    \resumeItem{Integrated real-time conferencing features including group video, screen sharing, and audio/video controls using ZegoCloud.}
-    \resumeItem{Added responsive dark/light themes with automatic system preference detection.}
-    \resumeItem{\textbf{Technologies:} Next.js, TypeScript, MongoDB, ZegoCloud}
+    \item \textbf{Production-Ready Platform}: Actively used by real users, featuring GitHub-style contribution graphs and \textbf{12-month habit heatmaps}.
+    \item \textbf{High Performance}: Intelligent caching, on-demand data fetching, and optimized mobile-first UI.
+    \item \textbf{Secure Authentication}: Google sign-in via Auth0, email + OTP verification, and JWT-based sessions.
+    \item \textbf{Scalability}: Reliable architecture designed to support \textbf{thousands of concurrent users}.
 \end{itemize}
 
-% Graphite
-\projectHeading
-    {\href{https://github.com/ankitsensei/graphite}{Graphite}}
-    {Jul 2026 -- Aug 2026}
-    {Frontend Developer}
+\noindent{\bfseries\itshape Technologies / Tools Used :}\ {\itshape React, Node.js, Express, Tailwind CSS, Postgresql\par}
+
+\vspace{4.8pt}
+\resumeProject
+    {\textbf{GMeet} | \href{https://github.com/ankitsensei/gmeet}{\smash{\faGithub}\ Github} \href{https://gmeet-three.vercel.app/}{\smash{\faGlobe}\ Website}}
+    {Sep 2026 - Sep 2026}
+    {\textit{Full Stack Web Developer}}
+    {Video Conferencing App --- Next.js, ZegoCloud, MongoDB}
 
 \begin{itemize}
-    \resumeItem{Developed a modern developer-focused web application using React and TypeScript with a responsive Tailwind CSS interface.}
-    \resumeItem{Built interactive drag-and-drop functionality using dnd-kit and integrated a rich text editor using Tiptap.}
-    \resumeItem{Implemented syntax highlighting and developer-oriented content rendering using Shiki.}
-    \resumeItem{\textbf{Technologies:} React, Tailwind CSS, TypeScript, dnd-kit, Shiki, Tiptap}
+    \item Built a \textbf{Google Meet-style video conferencing platform} using \textbf{Next.js, ZegoCloud, and MongoDB}, supporting real-time group meetings.
+    \item Implemented \textbf{2 OAuth providers (Google \& GitHub)} with protected routes and authentication middleware.
+    \item Developed \textbf{2 meeting flows} --- instant meeting creation with unique room links and join-by-code/URL functionality.
+    \item Integrated \textbf{4+ real-time conferencing capabilities}, including group video, screen sharing, and audio/video controls using ZegoCloud.
+    \item Added \textbf{responsive dark/light themes} with system preference detection across the application.
 \end{itemize}
 
-% The North Face
-\projectHeading
-    {\href{https://github.com/ankitsensei/the-north-face}{The North Face}}
-    {Jun 2026 -- Jun 2026}
-    {MERN Stack Developer}
+\noindent{\bfseries\itshape Technologies / Tools Used :}\ {\itshape Nextjs, TypeScript, MongoDB, ZegoCloud\par}
+
+\vspace{4.8pt}
+\resumeProject
+    {\textbf{graphite} | \href{https://github.com/ankitsensei/graphite}{\smash{\faGithub}\ Github} \href{https://graphite-five-plum.vercel.app/}{\smash{\faGlobe}\ Website}}
+    {Jul 2026 - Aug 2026}
+    {\textit{Frontend Developer}}
+    {Video Conferencing App --- Next.js, ZegoCloud, MongoDB}
 
 \begin{itemize}
-    \resumeItem{Developed a full-stack MERN e-commerce application featuring secure JWT authentication, product management, shopping cart, and RESTful APIs.}
-    \resumeItem{Implemented Stripe and Cash on Delivery payment methods, along with order tracking and an admin dashboard for managing products, users, and orders.}
-    \resumeItem{\textbf{Technologies:} React, Node.js, Express, MongoDB, Tailwind CSS}
+    \item Built a \textbf{Google Meet-style video conferencing platform} using \textbf{3 core technologies}: Next.js, ZegoCloud, and MongoDB.
+    \item Implemented \textbf{2 OAuth providers (Google \& GitHub)} with protected routes and authentication middleware.
+    \item Developed \textbf{2 meeting workflows}: instant meeting creation with unique room links and join-by-code/URL functionality.
+    \item Integrated \textbf{4+ real-time meeting features}, including group video calls, screen sharing, and audio/video controls using ZegoCloud.
+    \item Added \textbf{2 responsive UI themes (dark/light)} with automatic system preference detection.
 \end{itemize}
+
+\noindent{\bfseries\itshape Technologies / Tools Used :}\ {\itshape React, Tailwind CSS, TypeScript, dnd-kit, shiki, tiptap\par}
 
 % ---------- Skills ----------
 \section{SKILLS}
 
-\small
-\begin{tabularx}{\textwidth}{@{}>{\bfseries}l X@{}}
-Databases & MongoDB, MySQL, Supabase, Firebase, PostgreSQL \\
-Frameworks \& Libraries & React, Next.js, Node.js, Express, Tailwind CSS \\
-Programming Languages & TypeScript, JavaScript, Python, C, C++, Rust \\
-Tools \& Platforms & Git, GitHub, Postman, Linux \\
-Soft Skills & Leadership, Teamwork, Problem Solving, Communication, Decision Making, Adaptability \\
-Languages & English, Hindi \\
+\begin{tabularx}{\textwidth}{@{}>{\bfseries}l@{\hspace{40pt}}X@{}}
+Databases : & MongoDB, MySQL, Supabase, Firebase, PostgreSQL \\
+Frameworks \& Libraries : & React, Tailwind CSS, Node.js, Express, Next.js \\
+Languages : & English, Hindi \\
+Programming Languages : & JavaScript, TypeScript, Python, C, C++, Rust \\
+Soft Skills : & Leadership, Teamwork, Problem Solving, Communication, Decision Making, Adaptability \\
+Tools \& Platforms : & Git, GitHub, Postman, Linux, Docker \\
 \end{tabularx}
 
 % ---------- Education ----------
 \section{EDUCATION}
 
-\resumeSubheading
-    {Jharkhand Rai University}
-    {Sep 2024 -- Sep 2028}
-    {B.Tech in Computer Science and Engineering}
-    {Ranchi, Jharkhand}
-
-\small
-\textbf{CGPA:} 8.5
+\resumeEntry
+    {\textbf{Jharkhand Rai University --- Ranchi} | Ranchi, Jharkhand}
+    {Sep 2024 - Sep 2028}
+    {\textit{B.Tech in Computer Science and Engineering}}
+    {\textit{CGPA : 8.5}}
 
 \end{document}
